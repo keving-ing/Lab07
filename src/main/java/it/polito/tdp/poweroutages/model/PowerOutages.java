@@ -105,8 +105,7 @@ public class PowerOutages {
 
 	@Override
 	public String toString() {
-		return "PowerOutages [id=" + id + ", start=" + start + ", end=" + end + ", affectedPeople=" + affectedPeople
-				+ "]\n";
+		return start + " " + end + " " + affectedPeople + "\n";
 	}
 	
 	

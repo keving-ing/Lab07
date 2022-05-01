@@ -40,7 +40,8 @@ public class PowerOutageDAO {
 	{
 		String sql = "SELECT id,customers_affected,date_event_began, date_event_finished, nerc_id "
 				+ "FROM poweroutages "
-				+ "WHERE nerc_id = ?";
+				+ "WHERE nerc_id = ? "
+				+ "ORDER BY date_event_began DESC";
 		
 		List<PowerOutages> eventi = new ArrayList<>();
 

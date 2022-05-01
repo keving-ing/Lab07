@@ -19,6 +19,14 @@ public class Model {
 		
 	}
 	
+	
+	
+	public double getUtentiMigliore() {
+		return utentiMigliore;
+	}
+
+
+
 	public void TuttiGliEventi(Nerc n)
 	{
 		eventi = new LinkedList<PowerOutages>(podao.getAllEventi(n));
@@ -45,7 +53,7 @@ public class Model {
 		//casi terminali
 		long sommaOre = somma(parziale);
 		
-		if(sommaOre > Y && !range(parziale, X))
+		if(sommaOre > Y || !range(parziale, X))
 		{
 			return;
 		}
@@ -78,6 +86,18 @@ public class Model {
 		
 	}
 	
+	public long ore_migliore (List<PowerOutages> migliore) {
+		
+		long s = 0;
+		
+		for(PowerOutages p:migliore)
+		{
+			s+=p.getDurata_in_ore();
+		}
+		
+		return s;
+		
+	}
 
 
 	private int calcolaUtenti(List<PowerOutages> parziale) {
@@ -95,10 +115,16 @@ public class Model {
 
 	private boolean range(List<PowerOutages> parziale, int x) {
 		
+		if(parziale.size() == 0)
+		{
+			return true;
+		}
+		
 		if((parziale.get(parziale.size()-1).getYear() - parziale.get(0).getYear()) <= x)
 		{
 			return true;
 		}
+		
 		return false;
 	}
 
